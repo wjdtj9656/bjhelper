@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bjhelper.mapper.ProblemMapper">
+	<select id="selectAllProblems" resultType="ProblemDTO">
+		select * from problem
+	</select>
+	<insert id="addProblem">
+		insert into problem(context,user_id) values(#{context}, #{user_id})
+	</insert>
+	<update id="updateProblem">
+		update problem set
+		context = #{context}
+	</update>
+	<delete id="deleteProblem">
+		delete from problem
+		where id=#{id}
+	</delete>
+</mapper>
