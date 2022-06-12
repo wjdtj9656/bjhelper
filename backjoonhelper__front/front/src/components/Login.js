@@ -1,5 +1,5 @@
 import styles from "./Login.module.css";
-import API from "../api";
+import userAPI from "../api/UserApi";
 import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 const Login = () => {
@@ -14,7 +14,8 @@ const Login = () => {
   const onLogin = (e) => {
     console.log(user);
     e.preventDefault();
-    API.post("/auth/login", user)
+    userAPI
+      .post("/auth/login", user)
       .then((res1) => {
         localStorage.setItem("ACCESS_TOKEN", res1.data.token);
         navigate(`/list`);
