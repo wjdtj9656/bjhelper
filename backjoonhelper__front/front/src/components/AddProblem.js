@@ -1,7 +1,7 @@
 import styles from "./AddProblem.module.css";
 import problemApi from "../api/ProblemApi";
 import { useState } from "react";
-const AddProblem = () => {
+const AddProblem = (props) => {
   const [problem, setProblem] = useState({ user_id: "wjdtj9656", context: null });
   const registerProblem = (e) => {
     e.preventDefault();
@@ -11,9 +11,13 @@ const AddProblem = () => {
       .then((e) => {
         console.log(e);
       })
+      .then(() => {
+        props.showItems();
+      })
       .catch((e) => {
         console.log(e);
       });
+    props.showItems();
   };
   const inputContent = (e) => {
     setProblem({ user_id: problem.user_id, context: e.target.value });

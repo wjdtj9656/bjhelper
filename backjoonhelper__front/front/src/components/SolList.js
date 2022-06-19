@@ -1,27 +1,43 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import ProblemApi from "../api/ProblemApi";
 import AddProblem from "./AddProblem";
 import Modal from "./Modal";
 import Problem from "./Problem";
 import styles from "./SolList.module.css";
 const SolList = () => {
-  const [item, setItem] = useState({ id: null, text: "haha" });
+  const [item, setItem] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  useEffect(() => {
+    ProblemApi.get("/problem/wjdtj9656").then((temp) => {
+      setItem(temp);
+      console.log(temp);
+    });
+  }, []);
   const addBtnClick = () => {
     setShowModal(!showModal);
+  };
+  const showItems = () => {
+    ProblemApi.get("/problem/wjdtj9656").then((temp) => {
+      setItem(temp);
+      console.log(temp);
+      console.log("show!!!!");
+    });
   };
   return (
     <div>
       {showModal && (
         <Modal isShown={addBtnClick}>
-          <AddProblem />
+          <AddProblem showItems={showItems} />
         </Modal>
       )}
       <button className={styles.addBtn} onClick={addBtnClick}>
         Add Problem
       </button>
       <div className={styles.problemList}>
-        <Problem item={item} />
-        <Problem item={item} />
+        {item.data &&
+          item.data.map((item) => {
+            return <Problem item={item} key={item.id} />;
+          })}
       </div>
     </div>
   );
