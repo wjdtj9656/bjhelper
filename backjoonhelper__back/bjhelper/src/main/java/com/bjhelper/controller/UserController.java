@@ -54,6 +54,7 @@ public class UserController {
 			final UserDTO responseUserDTO = UserDTO.builder()
 					.email(loginUser.getEmail())
 					.username(loginUser.getUsername())
+					.id(userId)
 					.token(token)
 					.build();
 			return ResponseEntity.ok().body(responseUserDTO);

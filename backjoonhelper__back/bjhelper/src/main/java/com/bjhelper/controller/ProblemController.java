@@ -45,6 +45,7 @@ public class ProblemController {
 	@GetMapping("{user_id}")
 	public ResponseEntity<?> selectAllProblems(@PathVariable String user_id) throws Exception{
 		List<ProblemDTO> result = problemService.selectAllProblems(user_id);
+		System.out.println(result);
 		return new ResponseEntity<List<ProblemDTO>>(result,HttpStatus.OK);
 	}
 }

@@ -4,30 +4,32 @@ import AddProblem from "./AddProblem";
 import Modal from "./Modal";
 import Problem from "./Problem";
 import styles from "./SolList.module.css";
+// import { useRecoilState, useRecoilValue } from "recoil";
+// import { userIdState } from "../atom/Atom";
 const SolList = () => {
   const [item, setItem] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  // const uid = useRecoilState(userIdState);
+  const uid = localStorage.getItem("uid");
   useEffect(() => {
-    ProblemApi.get("/problem/wjdtj9656").then((temp) => {
+    ProblemApi.get(`/problem/${uid}`).then((temp) => {
+      console.log("haha");
       setItem(temp);
-      console.log(temp);
     });
   }, []);
-  const addBtnClick = () => {
+  const addBtnClick = (e) => {
     setShowModal(!showModal);
   };
   const showItems = () => {
-    ProblemApi.get("/problem/wjdtj9656").then((temp) => {
+    ProblemApi.get(`/problem/${uid}`).then((temp) => {
       setItem(temp);
-      console.log(temp);
-      console.log("show!!!!");
     });
   };
   return (
     <div>
       {showModal && (
         <Modal isShown={addBtnClick}>
-          <AddProblem showItems={showItems} />
+          <AddProblem showItems={showItems} isShown={addBtnClick} />
         </Modal>
       )}
       <button className={styles.addBtn} onClick={addBtnClick}>
@@ -36,7 +38,7 @@ const SolList = () => {
       <div className={styles.problemList}>
         {item.data &&
           item.data.map((item) => {
-            return <Problem item={item} key={item.id} />;
+            return <Problem item={item} key={item.id} showItems={showItems} />;
           })}
       </div>
     </div>

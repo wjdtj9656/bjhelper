@@ -2,8 +2,11 @@ import styles from "./Login.module.css";
 import userAPI from "../api/UserApi";
 import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+// import { useRecoilState } from "recoil";
+// import { userIdState } from "../atom/Atom";
 const Login = () => {
   const [user, setUser] = useState({ id: null, password: null });
+  // const [uid, setUid] = useRecoilState(userIdState);
   const navigate = useNavigate();
   const inputID = (e) => {
     setUser({ id: e.target.value, password: user.password });
@@ -12,12 +15,13 @@ const Login = () => {
     setUser({ id: user.id, password: e.target.value });
   };
   const onLogin = (e) => {
-    console.log(user);
     e.preventDefault();
     userAPI
       .post("/auth/login", user)
       .then((res1) => {
         localStorage.setItem("ACCESS_TOKEN", res1.data.token);
+        // setUid(res1.data.id);
+        localStorage.setItem("uid", res1.data.id);
         navigate(`/list`);
       })
       .catch((err) => {
