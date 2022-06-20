@@ -1,7 +1,8 @@
 import styles from "./Login.module.css";
-import userAPI from "../api/UserApi";
+import userAPI from "../../api/UserApi";
 import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import ProblemApi from "../../api/ProblemApi";
 // import { useRecoilState } from "recoil";
 // import { userIdState } from "../atom/Atom";
 const Login = () => {
@@ -22,7 +23,9 @@ const Login = () => {
         localStorage.setItem("ACCESS_TOKEN", res1.data.token);
         // setUid(res1.data.id);
         localStorage.setItem("uid", res1.data.id);
-        navigate(`/list`);
+      })
+      .then(() => {
+        navigate("list");
       })
       .catch((err) => {
         console.log(err);
@@ -45,7 +48,15 @@ const Login = () => {
         </div>
         <div className={styles.login__btns}>
           <button className={styles.login__btn}>Login</button>
-          <button className={styles.login__btn}>회원가입</button>
+          <button
+            className={styles.login__btn}
+            type="button"
+            onClick={() => {
+              navigate("/signup");
+            }}
+          >
+            회원가입
+          </button>
         </div>
       </form>
     </div>
