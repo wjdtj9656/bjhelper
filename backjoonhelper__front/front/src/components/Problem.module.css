@@ -1,10 +1,39 @@
 .problemBox {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border: 1px solid;
   border-radius: 20px;
   width: 50vw;
   height: 25vh;
   margin: 3vh auto;
+}
+.problemBtnLeft {
+  cursor: pointer;
+  border-radius: 10px;
+  border: 0px;
+  padding: 20px 20px;
+  background-color: yellow;
+  font-size: 20px;
+  margin: 0px 30px;
+}
+.problemBtnLeft:hover {
+  cursor: pointer;
+  background-color: yellowgreen;
+}
+.problemBtnRight {
+  cursor: pointer;
+  border-radius: 10px;
+  border: 0px;
+  padding: 10px 10px;
+  background-color: yellow;
+  font-size: 15px;
+  margin: 0px 30px;
+}
+.problemBtnRight:hover {
+  cursor: pointer;
+  background-color: yellowgreen;
+}
+.content {
+  word-break: break-all;
 }

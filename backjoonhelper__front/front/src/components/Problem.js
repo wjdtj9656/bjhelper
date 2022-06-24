@@ -7,10 +7,21 @@ const Problem = (props) => {
     });
     console.log(props.item);
   };
+  const url = props.item.url;
   return (
     <div className={styles.problemBox}>
-      {props.item.context}
-      <button onClick={deleteProblem}>삭제</button>
+      <button
+        onClick={() => {
+          window.open(url, "_blank");
+        }}
+        className={styles.problemBtnLeft}
+      >
+        바로가기
+      </button>
+      <div className={styles.content}>{props.item.context}</div>
+      <button onClick={deleteProblem} className={styles.problemBtnRight}>
+        X
+      </button>
     </div>
   );
 };

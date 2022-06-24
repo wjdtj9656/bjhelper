@@ -22,8 +22,6 @@ const SolList = () => {
         setItem(temp);
       })
       .catch((err) => {
-        console.log(localStorage.getItem("ACCESS_TOKEN"));
-        console.log(uid);
         console.log(err);
       });
   }, []);

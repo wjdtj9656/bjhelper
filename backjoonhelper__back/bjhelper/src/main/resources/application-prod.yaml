@@ -1,0 +1,22 @@
+logging:
+  level:
+    com:
+      ssafy:
+        happyhouse:
+          mapper: TRACE
+          util: TRACE
+    root: WARN
+mybatis:
+  mapper-locations: classpath:mappers/**/*.xml
+  type-aliases-package: com.bjhelper.dto
+server:
+  port: 5000
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: ${rds.password}
+    url: jdbc:mysql://${rds.hostname}:${rds.port}/${rds.db.name}
+    username: ${rds.username}
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER

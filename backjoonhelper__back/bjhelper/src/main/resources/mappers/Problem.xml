@@ -5,7 +5,7 @@
 		select * from problem where user_id = #{user_id}
 	</select>
 	<insert id="addProblem">
-		insert into problem(context,user_id) values(#{context}, #{user_id})
+		insert into problem(context,user_id,url) values(#{context}, #{user_id}, #{url})
 	</insert>
 	<update id="updateProblem">
 		update problem set

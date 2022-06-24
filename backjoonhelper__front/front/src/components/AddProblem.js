@@ -23,14 +23,17 @@ const AddProblem = (props) => {
       });
   };
   const inputContent = (e) => {
-    console.log(uid + " zzzzsa");
-    setProblem({ user_id: `${uid}`, context: e.target.value });
-    console.log(e.target.value);
+    setProblem({ ...problem, user_id: `${uid}`, context: e.target.value });
+    console.log(problem);
+  };
+  const inputURL = (e) => {
+    setProblem({ ...problem, url: e.target.value });
+    console.log(problem);
   };
   return (
     <form className={styles.input__form} onSubmit={registerProblem}>
       <div>
-        <input placeholder="URL" className={styles.input__box} />
+        <input placeholder="URL" className={styles.input__box} onChange={inputURL} />
       </div>
       <div>
         <input placeholder="Content" className={styles.input__box} onChange={inputContent} />

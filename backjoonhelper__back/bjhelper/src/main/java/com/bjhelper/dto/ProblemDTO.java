@@ -15,4 +15,5 @@ public class ProblemDTO {
 	private int id;
 	private String context;
 	private String User_id;
+	private String url;
 }
