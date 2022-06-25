@@ -20,5 +20,9 @@
   align-items: center;
 }
 .navcon {
+  cursor: pointer;
   margin: 0 1vw;
+}
+.navcon:hover {
+  color: yellow;
 }

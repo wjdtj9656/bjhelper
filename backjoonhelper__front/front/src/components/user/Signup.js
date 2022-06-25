@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./Signup.module.css";
 import userAPI from "../../api/UserApi";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 const Signup = () => {
   const [user, setUser] = useState({ id: null, email: null, username: null, password: null });
   const navigate = useNavigate();
@@ -23,9 +24,11 @@ const Signup = () => {
       .post("/auth/", user)
       .then((res1) => {})
       .then(() => {
+        Swal.fire("회원가입 성공");
         navigate("/");
       })
       .catch((err) => {
+        Swal.fire("회원가입 실패");
         console.log(err);
       });
   };
@@ -68,6 +71,7 @@ const Signup = () => {
             className={styles.login__btn}
             type="button"
             onClick={() => {
+              Swal.fire("로그인 페이지로 이동합니다.");
               navigate("/");
             }}
           >

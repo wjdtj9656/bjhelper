@@ -1,8 +1,10 @@
 import ProblemApi from "../api/ProblemApi";
 import styles from "./Problem.module.css";
+import Swal from "sweetalert2";
 const Problem = (props) => {
   const deleteProblem = () => {
     ProblemApi.delete(`/problem/${props.item.id}`).then(() => {
+      Swal.fire("삭제 성공");
       props.showItems();
     });
     console.log(props.item);

@@ -3,6 +3,7 @@ import userAPI from "../../api/UserApi";
 import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import ProblemApi from "../../api/ProblemApi";
+import Swal from "sweetalert2";
 // import { useRecoilState } from "recoil";
 // import { userIdState } from "../atom/Atom";
 const Login = () => {
@@ -25,9 +26,11 @@ const Login = () => {
         localStorage.setItem("uid", res1.data.id);
       })
       .then(() => {
+        Swal.fire("로그인되었습니다.");
         navigate("list");
       })
       .catch((err) => {
+        Swal.fire("로그인에 실패 했습니다.");
         console.log(err);
       });
   };
@@ -52,6 +55,7 @@ const Login = () => {
             className={styles.login__btn}
             type="button"
             onClick={() => {
+              Swal.fire("회원가입 페이지로 이동합니다.");
               navigate("/signup");
             }}
           >

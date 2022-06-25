@@ -5,6 +5,7 @@ import Modal from "./Modal";
 import Nav from "./Nav";
 import Problem from "./Problem";
 import styles from "./SolList.module.css";
+import Swal from "sweetalert2";
 // import { useRecoilState, useRecoilValue } from "recoil";
 // import { userIdState } from "../atom/Atom";
 const SolList = () => {
